@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- © 2026 Central de Aplicativos — Marlon Sigales. Todos os direitos reservados; copiar, reproduzir ou alterar exige autorização do autor (ver LICENSE). -->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Aplicativos</title>
+    <meta name="description" content="Aplicativos web de Marlon Sigales para projeto de produto (QFD, projeto conceitual, gestão de projetos), instalações elétricas, energia e automação. Todos rodam no navegador.">
+    <link rel="icon" type="image/png" href="img/icone-instagri.png">
+    <link rel="apple-touch-icon" href="img/icone-instagri-180.png">
+    <link rel="stylesheet" href="css/style.css?v=20261103a">
+</head>
+<body>
+    <header class="topbar">
+        <button type="button" class="sidebar-toggle" aria-label="Abrir o menu" aria-expanded="false"></button>
+        <a href="#inicio" class="topbar-marca" title="Início">
+            <img src="img/logo-instagri.png" alt="" height="36">
+            <span>Central de Aplicativos</span>
+        </a>
+        <span class="topbar-projeto">Marlon Sigales · Engenharia Agrícola · CEng/UFPel</span>
+        <a href="#progresso" class="topbar-selo" id="topbar-nivel" title="Seu nível nesta central">Nível 1 · 0 XP</a>
+    </header>
+
+    <div class="app-corpo">
+        <aside class="sidebar" id="sidebar">
+            <nav id="sidebar-nav" aria-label="Seções da central"></nav>
+            <div class="sidebar-arquivo">
+                <span class="sidebar-arquivo-rotulo">Seu progresso</span>
+                <div class="sidebar-nivel" id="sidebar-nivel"></div>
+                <a class="sidebar-arquivo-btn" href="#progresso">🏆 Ver conquistas</a>
+            </div>
+        </aside>
+        <div class="sidebar-fundo" data-acao="fechar-menu"></div>
+
+        <div class="app-conteudo">
+            <main class="main-content" id="app" tabindex="-1">
+                <div class="container">
+                    <section class="card card-intro" id="inicio">
+                        <h1>Central de Aplicativos</h1>
+                        <p>Aplicativos web para projeto de produto, instalações elétricas, energia e automação, feitos no
+                            Laboratório de Instrumentação Agrícola (Engenharia Agrícola, CEng/UFPel) e na Inova Agro UFPel EMBRAPII.
+                            Todos rodam no navegador, sem instalar nada: clique na figura ou no nome para abrir.</p>
+                        <p class="muted">Cada app aberto por aqui rende XP e conquistas. O progresso fica só neste navegador.</p>
+                    </section>
+
+                    <section class="card" id="fluxo" hidden>
+                        <div class="card-topo"><h2>Fluxo de projetos</h2><small>Siga as fases na ordem: a saída de um app é a entrada do próximo.</small></div>
+                        <ol class="fluxo" id="fluxo-lista"></ol>
+                    </section>
+
+                    <section class="card" id="progresso">
+                        <div class="card-topo">
+                            <h2>Seu progresso</h2>
+                            <button type="button" class="btn btn-secondary btn-sm" data-acao="zerar">Zerar progresso</button>
+                        </div>
+                        <div class="progresso" id="progresso-nivel"></div>
+                        <h3>Conquistas <small id="conquistas-contagem"></small></h3>
+                        <ul class="conquistas" id="conquistas-lista"></ul>
+                        <details class="regras">
+                            <summary>Como ganhar XP</summary>
+                            <ul id="regras-xp"></ul>
+                        </details>
+                    </section>
+
+                    <div id="categorias"></div>
+
+                    <section class="card card-agradecimento" id="agradecimento">
+                        <h2>Agradecimento</h2>
+                        <p>A ideia de reunir os aplicativos numa só página, com uma figura e uma linha sobre cada um, veio da página
+                            <a href="https://www.falstad.com/mathphysics.html" target="_blank" rel="noopener" data-falstad>Math, Physics, and Engineering Applets</a>
+                            do Prof. Paul Falstad.</p>
+                        <p>Obrigado, Professor Falstad, por compartilhar os seus aplicativos: eles sempre me foram muito úteis.</p>
+                        <p class="links-falstad">
+                            <a class="btn btn-secondary btn-sm" href="https://www.falstad.com/mathphysics.html" target="_blank" rel="noopener" data-falstad>↗ Aplicativos do Prof. Falstad</a>
+                            <a class="btn btn-secondary btn-sm" href="https://github.com/pfalstad" target="_blank" rel="noopener" data-falstad>↗ Repositório do Prof. Falstad no GitHub</a>
+                        </p>
+                    </section>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-logos">
+                        <img src="img/logo-inovaagro.png" alt="EMBRAPII - Inova Agro - UFPel" height="64">
+                        <img src="img/logo-nimeq.png" alt="NIMEq" height="64">
+                        <img src="img/logo-instagri.png" alt="Laboratório de Instrumentação Agrícola - UFPel" height="64">
+                    </div>
+                    <p>&copy; 2026 Central de Aplicativos</p>
+                    <p class="footer-credits">
+                        <strong>Desenvolvedor:</strong> Marlon Soares Sigales<br>
+                        <strong>Equipe Inova Agro - UFPel - EMBRAPII</strong>
+                    </p>
+                    <p class="footer-credits">
+                        © 2026 Marlon Sigales. Todos os direitos reservados: copiar, reproduzir ou alterar o código exige autorização do autor.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div class="aviso-flutuante" id="aviso" role="status" aria-live="polite"></div>
+
+    <script src="js/apps.js?v=20261103a"></script>
+    <script src="js/gamificacao.js?v=20261103a"></script>
+    <script src="js/app.js?v=20261103a"></script>
+</body>
+</html>

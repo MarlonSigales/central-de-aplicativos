@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- © 2026 Central de Aplicativos — Marlon Sigales. Todos os direitos reservados; copiar, reproduzir ou alterar exige autorização do autor (ver LICENSE). -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testes — Central de Aplicativos</title>
+<style>
+ body { font-family: 'Segoe UI', Arial, sans-serif; margin: 1.5rem; color: #1d2b2b; }
+ h1 { color: #085357; font-size: 1.3rem; }
+ #resultado { font-weight: 700; margin: 0.6rem 0 1rem; }
+ li.ok { color: #1f5f45; } li.falha { color: #b3261e; font-weight: 600; }
+ li small { display: block; color: #6b7a78; font-weight: 400; }
+</style>
+</head>
+<body>
+<h1>Testes automáticos — Central de Aplicativos</h1>
+<p>Os testes não mexem no progresso salvo. Também rodam no Node: <code>node tests/testes.js</code>.</p>
+<div id="resultado">Rodando…</div>
+<ol id="lista"></ol>
+<script src="../js/apps.js"></script>
+<script src="../js/gamificacao.js"></script>
+<script src="testes.js"></script>
+</body>
+</html>

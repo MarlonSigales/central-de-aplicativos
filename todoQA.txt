@@ -1,0 +1,35 @@
+© 2026 Central de Aplicativos — Marlon Sigales. Todos os direitos reservados; copiar, reproduzir ou alterar exige autorização do autor (ver LICENSE).
+
+TODO / QA — Central de Aplicativos
+Marcadores: [fazer] [futuro] [resolvido] [rejeitado]
+Atualizado em 03/11/2026 (versão 1). Os números são fixos (servem de referência).
+
+=== DIRETRIZES PERMANENTES
+- Mesma identidade visual do QFD, Projeto Conceitual, Gestão de Projetos e Supervisório MQTT (cores, topo, menu lateral, rodapé).
+- Pôr ou tirar app só em js/apps.js; o resto da página, o fluxo e as conquistas se ajustam sozinhos (tirar app nunca quebra).
+- Texto do catálogo sempre por esc() ao montar a página.
+- Progresso só no navegador (localStorage, com try/catch); nada é enviado a lugar nenhum.
+- Manter o agradecimento ao Prof. Paul Falstad com os links para falstad.com/mathphysics.html e github.com/pfalstad.
+- Todo arquivo novo começa com a linha de direitos autorais. Sem CDN. Trocar o ?v= ao publicar.
+- Testar em 360, 768, 1024 e 1920 px: nada sai da tela. Rodar node tests/testes.js antes de publicar.
+
+=== O QUE FOI FEITO
+1 [resolvido 03/11/2026] Página no estilo da do Prof. Falstad: categorias, figura + nome + uma linha por app.
+2 [resolvido 03/11/2026] Seis apps com tela real: QFD, Projeto Conceitual e Preliminar, Gestão de Projetos,
+  Projeto Elétrico Agroindustrial, Fotovoltaico Off-grid, Supervisório MQTT.
+3 [resolvido 03/11/2026] Fluxo de projetos QFD → Conceitual/Preliminar → Gestão, com "próximo" destacado.
+4 [resolvido 03/11/2026] Gamificação: XP, 6 níveis, 9 conquistas, aviso ao ganhar, zerar progresso.
+5 [resolvido 03/11/2026] Exclusão facilitada: ativo: false ou apagar o bloco em js/apps.js (testado).
+6 [resolvido 03/11/2026] Agradecimento ao Prof. Falstad com link para a página de aplicativos e para o GitHub dele.
+
+=== O QUE FALTA
+7 [fazer] Endereço do MCDA-C Web (hoje aparece como "endereço a cadastrar") e figura da tela dele.
+8 [fazer] Outros apps que o usuário quiser incluir: informar nome, endereço e repositório.
+9 [fazer] Conferir no navegador real se todos os endereços do GitHub Pages abrem (daqui não dá para acessar o github.io).
+10 [fazer] Ativar o GitHub Pages do repositório (Settings → Pages → main, / root).
+11 [futuro] Trocar as figuras quando a tela de algum app mudar muito.
+
+=== QA (03/11/2026)
+- node tests/testes.js: 13 de 13 passaram.
+- Playwright em 360, 768, 1024 e 1920 px: sem estouro horizontal e sem erro de JavaScript.
+- Clique no fluxo (QFD, Conceitual, Gestão), no código do MQTT e no link do Falstad: 130 XP, nível 3, 4 conquistas.
