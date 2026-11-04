@@ -10,12 +10,15 @@ HTML, CSS e JavaScript puros, sem servidor e sem bibliotecas externas.
 
 ## O que tem
 
-- **Aplicativos por área:** Projeto de produto, Apoio à decisão, Instalações elétricas e energia, Automação e supervisão.
-  Clique na figura ou no nome para abrir; "código ↗" leva ao repositório.
-- **Fluxo de projetos:** QFD (informacional) → Projeto Conceitual e Preliminar → Gestão de Projetos (TRL e relatórios),
-  com o próximo passo destacado.
-- **Gamificação:** XP, 6 níveis (Visitante → Mestre) e 9 conquistas. Conta só o que é aberto a partir da central e fica
-  só no navegador (localStorage); "Zerar progresso" apaga.
+- **Gestão de Projetos primeiro, em destaque:** é o sistema que faz tudo num só (QFD, projeto conceitual e preliminar, TRL e relatórios).
+- **Apps separados depois, para casos específicos:** Projeto de produto (QFD, Projeto Conceitual), Propriedade intelectual
+  (Apoio à Escrita de Patentes), Apoio à decisão (MCDA-C), Instalações elétricas e energia (Projeto Elétrico Agroindustrial,
+  Off-grid), Automação e supervisão (Sinótico — Supervisório MQTT) e Utilitários (Gerador de QR Code). Clique na figura ou no
+  nome para abrir; "código ↗" leva ao repositório.
+- **Fluxo de projetos com os apps separados:** QFD → Projeto Conceitual → Gestão de Projetos, com o próximo passo destacado.
+- **Jogo de missões** (o mesmo do Apoio à Escrita de Patentes): cada missão cumprida dá XP e uma medalha; o XP sobe o nível
+  (🌱 Curioso(a) → 🏆 Mestre dos aplicativos); "próxima missão" com botão para cumprir; +XP voando, medalha com confete.
+  Conta só o que é aberto a partir da central e fica só no navegador (localStorage); "Zerar progresso" apaga.
 
 | Ação | XP |
 |---|---|
@@ -24,7 +27,7 @@ HTML, CSS e JavaScript puros, sem servidor e sem bibliotecas externas.
 | Ver o código de um app (1ª vez) | +5 |
 | Voltar à central em outro dia | +3 |
 | Visitar a página do Prof. Falstad | +10 |
-| Cada conquista | bônus próprio (+5 a +40) |
+| Cada medalha | bônus próprio (+5 a +40) |
 
 ## Pôr ou tirar um aplicativo
 
@@ -33,13 +36,14 @@ Tudo está em **`js/apps.js`**; não precisa mexer em mais nada.
 - **Esconder sem apagar:** no bloco do app, troque `ativo: true` por `ativo: false`.
 - **Excluir de vez:** apague o bloco do app (de `{` até `},`) e, se quiser, a figura em `img/apps/`.
 - **Pôr um novo:** copie um bloco, troque o `id` e preencha. `url: ''` mostra "endereço a cadastrar".
+- **App em destaque (primeiro da página):** `destaque: true` (hoje só a Gestão de Projetos).
 
-A página, o fluxo, as conquistas e o XP ignoram sozinhos os apps fora do catálogo, e o progresso já salvo não quebra.
+A página, o fluxo, as missões, as medalhas e o XP ignoram sozinhos os apps fora do catálogo, e o progresso já salvo não quebra.
 Depois de mudar, troque o `?v=` em `index.html` para o navegador não usar a versão antiga.
 
 ## Testes
 
-`node tests/testes.js` ou abra `tests/testes.html`. Cobrem o catálogo, o XP, os níveis, as conquistas, a exclusão de apps
+`node tests/testes.js` ou abra `tests/testes.html`. Cobrem o catálogo, o XP, os níveis, as missões e medalhas, a exclusão de apps
 e o conserto de progresso salvo corrompido.
 
 ## Arquivos

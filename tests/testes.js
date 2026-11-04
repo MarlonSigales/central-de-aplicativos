@@ -25,7 +25,7 @@ function teste(nome, f) { TESTES.push({ nome, f }); }
 function ok(c, msg) { if (!c) throw new Error(msg || 'condição falsa'); }
 function igual(a, b, msg) { if (JSON.stringify(a) !== JSON.stringify(b)) throw new Error(`${msg || ''} esperado ${JSON.stringify(b)}, veio ${JSON.stringify(a)}`); }
 const copia = (x) => JSON.parse(JSON.stringify(x));
-const ids = (lista) => lista.map((x) => x.c.id);
+const ids = (lista) => lista.map((x) => x.m.id);
 
 // ---------------------------------------------------------------- catálogo
 teste('Catálogo: ids únicos, categoria conhecida e campos obrigatórios', () => {
@@ -48,8 +48,8 @@ teste('Fluxo aponta só para apps do catálogo', () => {
 // ---------------------------------------------------------------- XP e níveis
 teste('Abrir um app: +20 na 1ª vez, nada no mesmo dia, +5 em outro dia', () => {
     let r = G.registrar(G.novoEstado(), 'abrir', 'qfd', APP, FLX, '2026-11-03');
-    igual(r.estado.abertos.qfd.vezes, 1);
-    ok(r.estado.conquistas['primeiro-passo'], 'primeiro passo');
+    igual(r.estado.abertos.qfd.vezes, 1); ok(r.subiu === false);
+    ok(r.estado.medalhas['primeiro-passo'], 'primeiro passo');
     igual(r.estado.xp, 20 + 5, 'abrir + bônus do primeiro passo');
     r = G.registrar(r.estado, 'abrir', 'qfd', APP, FLX, '2026-11-03'); igual(r.ganho, 0, 'mesmo dia');
     r = G.registrar(r.estado, 'abrir', 'qfd', APP, FLX, '2026-11-04'); igual(r.ganho, 5, 'outro dia');
@@ -59,7 +59,8 @@ teste('Abrir um app: +20 na 1ª vez, nada no mesmo dia, +5 em outro dia', () => 
 teste('App inativo ou sem endereço não conta', () => {
     const apps = copia(APP); apps.find((a) => a.id === 'qfd').ativo = false;
     let r = G.registrar(G.novoEstado(), 'abrir', 'qfd', apps, FLX, '2026-11-03'); igual(r.ganho, 0, 'inativo');
-    r = G.registrar(G.novoEstado(), 'abrir', 'mcdac', APP, FLX, '2026-11-03'); igual(r.ganho, 0, 'sem url');
+    const sem = copia(APP); sem.find((a) => a.id === 'mcdac').url = '';
+    r = G.registrar(G.novoEstado(), 'abrir', 'mcdac', sem, FLX, '2026-11-03'); igual(r.ganho, 0, 'sem url');
     r = G.registrar(G.novoEstado(), 'abrir', 'nao-existe', APP, FLX, '2026-11-03'); igual(r.ganho, 0, 'id desconhecido');
 });
 
@@ -68,28 +69,42 @@ teste('Visita: 1º dia sem XP, outro dia +3; 3 dias dão Frequentador', () => {
     let r = G.registrar(e, 'visita', null, APP, FLX, '2026-11-01'); igual(r.ganho, 0, 'mesmo dia');
     r = G.registrar(r.estado, 'visita', null, APP, FLX, '2026-11-02'); igual(r.ganho, 3);
     r = G.registrar(r.estado, 'visita', null, APP, FLX, '2026-11-05');
-    ok(r.estado.conquistas.frequentador); igual(r.ganho, 3 + 15);
+    ok(r.estado.medalhas.frequentador); igual(r.ganho, 3 + 15);
 });
 
 teste('Níveis: limites e fração', () => {
     igual(G.nivel(0).numero, 1); igual(G.nivel(29).numero, 1); igual(G.nivel(30).numero, 2);
-    igual(G.nivel(55).frac, 0.5); igual(G.nivel(9999).nome, 'Mestre'); igual(G.nivel(9999).falta, 0);
+    igual(G.nivel(55).frac, 0.5); igual(G.nivel(9999).nome, 'Mestre dos aplicativos'); igual(G.nivel(9999).falta, 0);
 });
 
 // ---------------------------------------------------------------- conquistas
-teste('Fluxo na ordem só vale se a 1ª abertura seguir as fases', () => {
+teste('Rumo certo só vale se a Gestão de Projetos for o primeiro app aberto', () => {
     let e = G.novoEstado();
-    ['qfd', 'conceitual', 'gestao'].forEach((id) => { e = G.registrar(e, 'abrir', id, APP, FLX, '2026-11-03').estado; });
-    ok(e.conquistas['fluxo-projeto'] && e.conquistas['fluxo-na-ordem'], 'na ordem');
+    ['gestao', 'qfd', 'conceitual'].forEach((id) => { e = G.registrar(e, 'abrir', id, APP, FLX, '2026-11-03').estado; });
+    ok(e.medalhas['rumo-certo'] && e.medalhas['fluxo-projeto'], 'gestão primeiro + fluxo');
     let f = G.novoEstado();
-    ['gestao', 'qfd', 'conceitual'].forEach((id) => { f = G.registrar(f, 'abrir', id, APP, FLX, '2026-11-03').estado; });
-    ok(f.conquistas['fluxo-projeto'], 'fluxo completo'); ok(!f.conquistas['fluxo-na-ordem'], 'fora de ordem');
+    ['qfd', 'gestao'].forEach((id) => { f = G.registrar(f, 'abrir', id, APP, FLX, '2026-11-03').estado; });
+    ok(!f.medalhas['rumo-certo'], 'começou pelo QFD');
+});
+
+teste('Próxima missão: começa pela Gestão e avança sozinha', () => {
+    let e = G.novoEstado();
+    igual(G.proximaMissao(e, APP, FLX).alvo, { abrir: 'gestao' });
+    e = G.registrar(e, 'abrir', 'gestao', APP, FLX, '2026-11-03').estado;
+    igual(G.proximaMissao(e, APP, FLX).missao.id, 'fluxo-projeto'); igual(G.proximaMissao(e, APP, FLX).alvo, { abrir: 'qfd' });
+    const apps = APP.filter((a) => a.id !== 'gestao');
+    igual(G.proximaMissao(G.novoEstado(), apps, FLX).missao.id, 'primeiro-passo', 'sem Gestão, a missão Rumo certo some');
+});
+
+teste('Progresso da versão 1 (conquistas) é aproveitado', () => {
+    const e = G.normalizar({ xp: 40, conquistas: { 'primeiro-passo': '2026-11-03' } });
+    igual(e.medalhas['primeiro-passo'], '2026-11-03');
 });
 
 teste('Colecionador exige todos os apps com endereço', () => {
     let e = G.novoEstado();
     APP.filter((a) => a.ativo && a.url).forEach((a) => { e = G.registrar(e, 'abrir', a.id, APP, FLX, '2026-11-03').estado; });
-    ok(e.conquistas.colecionador); ok(e.conquistas['energia-rural']); ok(e.conquistas['projeto-a-planta']);
+    ok(e.medalhas.colecionador); ok(e.medalhas['energia-rural']); ok(e.medalhas['projeto-a-planta']); ok(e.medalhas.inventor);
 });
 
 teste('Código e Falstad dão XP uma vez só', () => {
@@ -100,21 +115,21 @@ teste('Código e Falstad dão XP uma vez só', () => {
 });
 
 // ---------------------------------------------------------------- exclusão facilitada
-teste('Desativar um app esconde as conquistas que dependem dele', () => {
+teste('Desativar um app esconde as missões que dependem dele', () => {
     const apps = copia(APP); apps.find((a) => a.id === 'offgrid').ativo = false;
-    ok(!ids(G.conquistasAtivas(apps, FLX)).includes('energia-rural'), 'energia-rural some');
-    ok(ids(G.conquistasAtivas(APP, FLX)).includes('energia-rural'), 'com o app, aparece');
+    ok(!ids(G.missoesAtivas(apps, FLX)).includes('energia-rural'), 'energia-rural some');
+    ok(ids(G.missoesAtivas(APP, FLX)).includes('energia-rural'), 'com o app, aparece');
 });
 
-teste('Apagar o bloco de um app do fluxo: fluxo e conquistas se ajustam', () => {
+teste('Apagar o bloco de um app do fluxo: fluxo e missões se ajustam', () => {
     const apps = APP.filter((a) => a.id !== 'conceitual');
     let e = G.novoEstado();
     ['qfd', 'gestao'].forEach((id) => { e = G.registrar(e, 'abrir', id, apps, FLX, '2026-11-03').estado; });
-    ok(e.conquistas['fluxo-projeto'] && e.conquistas['fluxo-na-ordem'], 'fluxo com 2 fases');
+    ok(e.medalhas['fluxo-projeto'] && e.medalhas['rumo-certo'] === undefined, 'fluxo com 2 fases (QFD aberto antes da Gestão)');
 });
 
 teste('Catálogo sem apps não quebra', () => {
-    igual(G.conquistasAtivas([], []).map((x) => x.c.id).sort(), ['frequentador', 'obrigado-falstad']);
+    igual(G.missoesAtivas([], []).map((x) => x.m.id).sort(), ['frequentador', 'obrigado-falstad']);
     igual(G.registrar(G.novoEstado(), 'abrir', 'qfd', [], [], '2026-11-03').ganho, 0);
 });
 

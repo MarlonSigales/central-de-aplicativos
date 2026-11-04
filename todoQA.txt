@@ -2,7 +2,7 @@
 
 TODO / QA — Central de Aplicativos
 Marcadores: [fazer] [futuro] [resolvido] [rejeitado]
-Atualizado em 03/11/2026 (versão 1). Os números são fixos (servem de referência).
+Atualizado em 03/11/2026 (versão 2). Os números são fixos (servem de referência).
 
 === DIRETRIZES PERMANENTES
 - Mesma identidade visual do QFD, Projeto Conceitual, Gestão de Projetos e Supervisório MQTT (cores, topo, menu lateral, rodapé).
@@ -22,14 +22,26 @@ Atualizado em 03/11/2026 (versão 1). Os números são fixos (servem de referên
 5 [resolvido 03/11/2026] Exclusão facilitada: ativo: false ou apagar o bloco em js/apps.js (testado).
 6 [resolvido 03/11/2026] Agradecimento ao Prof. Falstad com link para a página de aplicativos e para o GitHub dele.
 
+12 [resolvido 03/11/2026] Ícone do Agradecimento no menu: coração trocado por braço fazendo muque (💪).
+13 [resolvido 03/11/2026] Gestão de Projetos primeiro, sozinha, em destaque; apps separados depois, para casos específicos.
+14 [resolvido 03/11/2026] Endereços passados pelo usuário; novos apps: Apoio à Escrita de Patentes, MCDA-C, Gerador de QR Code.
+15 [resolvido 03/11/2026] Gamificação igual à do Apoio à Escrita de Patentes: missões, medalhas, níveis com ícone, próxima
+   missão, +XP voando, medalha com confete. Missão "Na ordem certa" trocada por "Rumo certo" (começar pela Gestão).
+
 === O QUE FALTA
-7 [fazer] Endereço do MCDA-C Web (hoje aparece como "endereço a cadastrar") e figura da tela dele.
+7 [resolvido 03/11/2026] Endereço do MCDA-C Web.
 8 [fazer] Outros apps que o usuário quiser incluir: informar nome, endereço e repositório.
-9 [fazer] Conferir no navegador real se todos os endereços do GitHub Pages abrem (daqui não dá para acessar o github.io).
-10 [fazer] Ativar o GitHub Pages do repositório (Settings → Pages → main, / root).
+9 [fazer] Conferir no navegador real (endereços de 03/11 passados pelo usuário) se todos os endereços do GitHub Pages abrem (daqui não dá para acessar o github.io).
+10 [resolvido 03/11/2026] GitHub Pages ativo (endereço passado pelo usuário).
 11 [futuro] Trocar as figuras quando a tela de algum app mudar muito.
 
 === QA (03/11/2026)
 - node tests/testes.js: 13 de 13 passaram.
 - Playwright em 360, 768, 1024 e 1920 px: sem estouro horizontal e sem erro de JavaScript.
 - Clique no fluxo (QFD, Conceitual, Gestão), no código do MQTT e no link do Falstad: 130 XP, nível 3, 4 conquistas.
+
+=== QA (03/11/2026, versão 2)
+- node tests/testes.js: 15 de 15 passaram.
+- Playwright em 360, 768, 1024 e 1920 px: sem estouro horizontal e sem erro de JavaScript.
+- Abrir Gestão (destaque) → QFD → Conceitual, código do MQTT e Falstad: 120 XP, Projetista, 4 medalhas (Rumo certo primeiro).
+- Figura do Gerador de QR Code: o QR da figura foi gerado localmente, porque o ambiente de teste não acessa o CDN do qrcodejs.

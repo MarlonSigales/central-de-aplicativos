@@ -8,7 +8,7 @@
     <meta name="description" content="Aplicativos web de Marlon Sigales para projeto de produto (QFD, projeto conceitual, gestão de projetos), instalações elétricas, energia e automação. Todos rodam no navegador.">
     <link rel="icon" type="image/png" href="img/icone-instagri.png">
     <link rel="apple-touch-icon" href="img/icone-instagri-180.png">
-    <link rel="stylesheet" href="css/style.css?v=20261103a">
+    <link rel="stylesheet" href="css/style.css?v=20261103b">
 </head>
 <body>
     <header class="topbar">
@@ -18,7 +18,7 @@
             <span>Central de Aplicativos</span>
         </a>
         <span class="topbar-projeto">Marlon Sigales · Engenharia Agrícola · CEng/UFPel</span>
-        <a href="#progresso" class="topbar-selo" id="topbar-nivel" title="Seu nível nesta central">Nível 1 · 0 XP</a>
+        <a href="#progresso" class="xp-topo" id="xp-topo" title="Seu nível e XP: cada missão cumprida dá pontos e medalhas"></a>
     </header>
 
     <div class="app-corpo">
@@ -27,7 +27,7 @@
             <div class="sidebar-arquivo">
                 <span class="sidebar-arquivo-rotulo">Seu progresso</span>
                 <div class="sidebar-nivel" id="sidebar-nivel"></div>
-                <a class="sidebar-arquivo-btn" href="#progresso">🏆 Ver conquistas</a>
+                <a class="sidebar-arquivo-btn" href="#progresso">🏅 Missões e medalhas</a>
             </div>
         </aside>
         <div class="sidebar-fundo" data-acao="fechar-menu"></div>
@@ -40,29 +40,37 @@
                         <p>Aplicativos web para projeto de produto, instalações elétricas, energia e automação, feitos no
                             Laboratório de Instrumentação Agrícola (Engenharia Agrícola, CEng/UFPel) e na Inova Agro UFPel EMBRAPII.
                             Todos rodam no navegador, sem instalar nada: clique na figura ou no nome para abrir.</p>
-                        <p class="muted">Cada app aberto por aqui rende XP e conquistas. O progresso fica só neste navegador.</p>
+                        <p class="muted">Comece pela Gestão de Projetos; os apps separados vêm depois, para casos específicos. Cada missão cumprida dá XP e uma medalha, e o progresso fica só neste navegador.</p>
                     </section>
 
+                    <section class="card card-destaque" id="destaque" hidden></section>
+
+                    <div class="separados-topo" id="separados">
+                        <h2>Aplicativos separados</h2>
+                        <p>Para casos específicos: cada fase ou tarefa num app próprio. A Gestão de Projetos já integra o QFD e o projeto conceitual e preliminar.</p>
+                    </div>
+
                     <section class="card" id="fluxo" hidden>
-                        <div class="card-topo"><h2>Fluxo de projetos</h2><small>Siga as fases na ordem: a saída de um app é a entrada do próximo.</small></div>
+                        <div class="card-topo"><h2>Fluxo de projetos com os apps separados</h2><small>A saída de um app é a entrada do próximo.</small></div>
                         <ol class="fluxo" id="fluxo-lista"></ol>
                     </section>
 
-                    <section class="card" id="progresso">
+                    <div id="categorias"></div>
+
+                    <section class="card painel-jogo" id="progresso">
                         <div class="card-topo">
-                            <h2>Seu progresso</h2>
+                            <h2>🎮 Missões e medalhas</h2>
                             <button type="button" class="btn btn-secondary btn-sm" data-acao="zerar">Zerar progresso</button>
                         </div>
                         <div class="progresso" id="progresso-nivel"></div>
-                        <h3>Conquistas <small id="conquistas-contagem"></small></h3>
-                        <ul class="conquistas" id="conquistas-lista"></ul>
+                        <div id="proxima-missao"></div>
+                        <h3>🏅 Medalhas <small id="medalhas-contagem"></small></h3>
+                        <div class="medalhas" id="medalhas-lista"></div>
                         <details class="regras">
                             <summary>Como ganhar XP</summary>
                             <ul id="regras-xp"></ul>
                         </details>
                     </section>
-
-                    <div id="categorias"></div>
 
                     <section class="card card-agradecimento" id="agradecimento">
                         <h2>Agradecimento</h2>
@@ -100,8 +108,8 @@
 
     <div class="aviso-flutuante" id="aviso" role="status" aria-live="polite"></div>
 
-    <script src="js/apps.js?v=20261103a"></script>
-    <script src="js/gamificacao.js?v=20261103a"></script>
-    <script src="js/app.js?v=20261103a"></script>
+    <script src="js/apps.js?v=20261103b"></script>
+    <script src="js/gamificacao.js?v=20261103b"></script>
+    <script src="js/app.js?v=20261103b"></script>
 </body>
 </html>
