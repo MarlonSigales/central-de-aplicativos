@@ -23,6 +23,7 @@ const CATEGORIAS = [
     { id: 'decisao', nome: 'Apoio à decisão', descricao: 'Escolher entre alternativas com critérios explícitos.' },
     { id: 'eletrica', nome: 'Instalações elétricas e energia', descricao: 'Apps didáticos de Energização Rural e de Projeto de Instalações Elétricas Agroindustriais.' },
     { id: 'automacao', nome: 'Automação e supervisão', descricao: 'Acompanhar e comandar plantas pelo navegador.' },
+    { id: 'academico', nome: 'Gestão acadêmica', descricao: 'Organização de aulas, professores, salas e laboratórios.' },
     { id: 'utilitarios', nome: 'Utilitários', descricao: 'Ferramentas pequenas do dia a dia.' }
 ];
 
@@ -116,6 +117,17 @@ const APPS = [
         codigo: 'https://github.com/MarlonSigales/MQTT-Cliente-supervisorio',
         imagem: 'img/apps/mqtt.jpg',
         etiquetas: ['MQTT', 'pós-colheita']
+    },
+    {
+        id: 'horarios',
+        ativo: true,
+        categoria: 'academico',
+        nome: 'Gerador de Horários',
+        descricao: 'Grade de professores em salas e laboratórios: restrições, ofertas e reofertas, aleatorizar, editar vendo os conflitos e PDF.',
+        url: 'https://marlonsigales.github.io/Gerador-de-horarios/',
+        codigo: 'https://github.com/MarlonSigales/Gerador-de-horarios',
+        imagem: 'img/apps/horarios.jpg',
+        etiquetas: ['grade horária', 'conflitos', 'PDF']
     },
     {
         id: 'qrcode',

@@ -28,12 +28,17 @@ Atualizado em 03/11/2026 (versão 2). Os números são fixos (servem de referên
 15 [resolvido 03/11/2026] Gamificação igual à do Apoio à Escrita de Patentes: missões, medalhas, níveis com ícone, próxima
    missão, +XP voando, medalha com confete. Missão "Na ordem certa" trocada por "Rumo certo" (começar pela Gestão).
 
+16 [resolvido 16/11/2026] Novo app: Gerador de Horários (categoria nova "Gestão acadêmica"), com figura da tela real.
+
 === O QUE FALTA
 7 [resolvido 03/11/2026] Endereço do MCDA-C Web.
 8 [fazer] Outros apps que o usuário quiser incluir: informar nome, endereço e repositório.
 9 [fazer] Conferir no navegador real (endereços de 03/11 passados pelo usuário) se todos os endereços do GitHub Pages abrem (daqui não dá para acessar o github.io).
 10 [resolvido 03/11/2026] GitHub Pages ativo (endereço passado pelo usuário).
 11 [futuro] Trocar as figuras quando a tela de algum app mudar muito.
+
+=== QA (16/11/2026)
+- node tests/testes.js: 15 de 15 passaram depois de incluir o Gerador de Horários.
 
 === QA (03/11/2026)
 - node tests/testes.js: 13 de 13 passaram.
