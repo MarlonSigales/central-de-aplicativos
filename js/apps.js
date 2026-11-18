@@ -113,11 +113,11 @@ const APPS = [
         ativo: true,
         categoria: 'eletronica',
         nome: 'Simulador de Circuitos (Falstad + SPICE)',
-        descricao: 'Circuitos em tempo real com a usabilidade do simulador do Prof. Falstad e modelos SPICE: biblioteca pesquisável, Caixa SPICE e osciloscópio.',
+        descricao: 'Circuitos em tempo real como no simulador do Prof. Falstad, com modelos SPICE, não idealidades, microcontrolador em C/Arduino, análises no ngspice e importação do Falstad.',
         url: 'https://marlonsigales.github.io/simulador-baseado-no-falstad-e-spice/',
         codigo: 'https://github.com/MarlonSigales/simulador-baseado-no-falstad-e-spice',
         imagem: 'img/apps/simulador.jpg',
-        etiquetas: ['tempo real', 'SPICE', 'aula']
+        etiquetas: ['tempo real', 'SPICE', 'microcontrolador', 'aula']
     },
     {
         id: 'mqtt',

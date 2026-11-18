@@ -29,7 +29,8 @@ Atualizado em 03/11/2026 (versão 2). Os números são fixos (servem de referên
    missão, +XP voando, medalha com confete. Missão "Na ordem certa" trocada por "Rumo certo" (começar pela Gestão).
 
 16 [resolvido 16/11/2026] Novo app: Gerador de Horários (categoria nova "Gestão acadêmica"), com figura da tela real.
-17 [resolvido 18/11/2026] Novo app: Simulador de Circuitos (Falstad + SPICE), categoria nova "Eletrônica e simulação", com figura da tela real.
+17 [resolvido 18/11/2026] Novo app: Simulador de Circuitos (Falstad + SPICE); descrição atualizada com microcontrolador, ngspice e importação do Falstad.
+   Primeira versão:, categoria nova "Eletrônica e simulação", com figura da tela real.
    Endereço do GitHub Pages a confirmar quando o Pages do repositório for ativado.
 
 === O QUE FALTA
