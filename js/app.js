@@ -2,7 +2,7 @@
  * © 2026 Central de Aplicativos — Marlon Sigales. Todos os direitos reservados; copiar, reproduzir ou alterar exige autorização do autor (ver LICENSE).
  *
  * Monta a página a partir do catálogo (js/apps.js) e liga o jogo de missões (js/gamificacao.js).
- * Ordem: o app em destaque (Gestão de Projetos) primeiro; os apps separados depois, por categoria.
+ * Ordem: por categoria; o app em destaque (Gestão de Projetos) vem primeiro, com mais destaque, dentro da sua categoria.
  */
 
 'use strict';
@@ -17,15 +17,13 @@ const Central = {
     ativos() { return APPS.filter((a) => a.ativo); },
     app(id) { return this.ativos().find((a) => a.id === id) || null; },
     destaque() { return this.ativos().find((a) => a.destaque) || null; },
-    separados() { const d = this.destaque(); return this.ativos().filter((a) => a !== d); },
+    separados() { const d = this.destaque(); return this.ativos().slice().sort((a, b) => (b === d) - (a === d)); }, // destaque primeiro na categoria
     categoriasComApps() { return CATEGORIAS.filter((c) => this.separados().some((a) => a.categoria === c.id)); },
     fluxo() { return FLUXO.filter((f) => { const a = this.app(f.app); return a && a.url; }); },
 
     iniciar() {
         this.estado = Gamificacao.carregar();
-        this.montarDestaque();
         this.montarCategorias();
-        this.montarFluxo();
         this.montarMenu();
         this.montarRegras();
         this.evento('visita');
@@ -51,11 +49,9 @@ const Central = {
         </div>`;
     },
 
-    montarDestaque() {
-        const a = this.destaque(), el = $('#destaque');
-        el.hidden = !a;
-        if (!a) { el.innerHTML = ''; return; }
-        el.innerHTML = `<div class="destaque" data-app="${esc(a.id)}">
+    /** O app em destaque, no topo da sua categoria e maior que os demais. */
+    itemDestaque(a) {
+        return `<li class="app-item app-item-destaque"><div class="destaque" data-app="${esc(a.id)}">
             ${this.linkApp(a, this.figura(a), 'app-fig')}
             <div class="app-texto">
                 <span class="destaque-rotulo">comece por aqui</span>
@@ -64,7 +60,7 @@ const Central = {
                 ${a.url ? `<p><a class="btn btn-primary" href="${esc(a.url)}" target="_blank" rel="noopener" data-abrir="${esc(a.id)}">Abrir ${esc(a.nome)} ▶</a></p>` : ''}
                 ${this.rodape(a)}
             </div>
-        </div>`;
+        </div></li>`;
     },
 
     montarCategorias() {
@@ -73,7 +69,7 @@ const Central = {
         $('#categorias').innerHTML = this.categoriasComApps().map((c) => `
             <section class="card categoria" id="cat-${esc(c.id)}">
                 <div class="card-topo"><h2>${esc(c.nome)}</h2><small>${esc(c.descricao)}</small></div>
-                <ul class="lista-apps">${sep.filter((a) => a.categoria === c.id).map((a) => this.itemApp(a)).join('')}</ul>
+                <ul class="lista-apps">${sep.filter((a) => a.categoria === c.id).map((a) => (a === this.destaque() ? this.itemDestaque(a) : this.itemApp(a))).join('')}</ul>
             </section>`).join('');
     },
 
@@ -88,26 +84,11 @@ const Central = {
         </li>`;
     },
 
-    montarFluxo() {
-        const f = this.fluxo();
-        $('#fluxo').hidden = f.length < 2;
-        $('#fluxo-lista').innerHTML = f.map((p, i) => {
-            const a = this.app(p.app);
-            return `<li><a class="fluxo-passo" href="${esc(a.url)}" target="_blank" rel="noopener" data-abrir="${esc(a.id)}" data-passo="${esc(a.id)}">
-                <span class="sidebar-num">${i + 1}</span>
-                <span><small>${esc(p.fase)}</small><b>${esc(a.nome)}</b><span>${esc(p.texto)}</span></span>
-            </a></li>`;
-        }).join('');
-    },
-
     montarMenu() {
         const link = (href, txt, num) => `<a class="sidebar-link" href="${href}">${num !== undefined ? `<span class="sidebar-num">${num}</span>` : ''}<span>${esc(txt)}</span></a>`;
-        const d = this.destaque();
         let h = link('#inicio', 'Início', '⌂');
-        if (d) h += link('#destaque', d.nome, '★');
         if (this.categoriasComApps().length) {
-            h += '<span class="sidebar-grupo">Apps separados</span>';
-            if (this.fluxo().length >= 2) h += link('#fluxo', 'Fluxo de projetos', '→');
+            h += '<span class="sidebar-grupo">Aplicativos</span>';
             h += this.categoriasComApps().map((c) => link(`#cat-${esc(c.id)}`, c.nome, this.separados().filter((a) => a.categoria === c.id).length)).join('');
         }
         h += '<span class="sidebar-grupo">Jogo</span>' + link('#progresso', 'Missões e medalhas', '🏅');

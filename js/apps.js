@@ -10,7 +10,7 @@
  *   sozinhos os apps que não estão ativos. O progresso já guardado no navegador não quebra.
  *
  * PÔR UM APLICATIVO: copie um bloco, troque o id (único, sem espaço) e preencha os campos.
- *   destaque: true = aparece primeiro, sozinho, no topo da página (hoje: Gestão de Projetos).
+ *   destaque: true = aparece primeiro e maior dentro da sua categoria (hoje: Gestão de Projetos, em Projeto de produto).
  *   url vazia ('') = aparece como "endereço a cadastrar", sem botão de abrir.
  */
 
@@ -18,7 +18,7 @@
 
 /** Categorias dos apps separados (para casos específicos), na ordem em que aparecem. */
 const CATEGORIAS = [
-    { id: 'produto', nome: 'Projeto de produto', descricao: 'As fases do projeto em apps separados.' },
+    { id: 'produto', nome: 'Projeto de produto', descricao: 'A Gestão de Projetos (tudo num só) e as fases do projeto em apps separados.' },
     { id: 'pi', nome: 'Propriedade intelectual', descricao: 'Do invento ao pedido de patente.' },
     { id: 'decisao', nome: 'Apoio à decisão', descricao: 'Escolher entre alternativas com critérios explícitos.' },
     { id: 'eletrica', nome: 'Instalações elétricas e energia', descricao: 'Apps didáticos de Energização Rural e de Projeto de Instalações Elétricas Agroindustriais.' },

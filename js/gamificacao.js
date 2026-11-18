@@ -68,7 +68,7 @@ const Gamificacao = (() => {
         },
         {
             id: 'fluxo-projeto', icone: '🧭', nome: 'Fluxo de projeto', bonus: 25,
-            texto: 'Abrir os apps do fluxo de projetos.',
+            texto: 'Abrir os apps de Projeto de produto (QFD, Projeto Conceitual e Gestão de Projetos).',
             requer: (apps, fluxo) => { const ids = idsFluxo(apps, fluxo); return ids.length >= 2 ? ids : null; },
             feita: (e, ids) => ids.every((id) => abriu(e, id)),
             alvo: (e, ids) => ({ abrir: primeiroSemAbrir(e, ids) })
