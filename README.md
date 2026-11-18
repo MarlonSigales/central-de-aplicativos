@@ -13,7 +13,7 @@ HTML, CSS e JavaScript puros, sem servidor e sem bibliotecas externas.
 - **Gestão de Projetos primeiro, em destaque:** é o sistema que faz tudo num só (QFD, projeto conceitual e preliminar, TRL e relatórios).
 - **Apps separados depois, para casos específicos:** Projeto de produto (QFD, Projeto Conceitual), Propriedade intelectual
   (Apoio à Escrita de Patentes), Apoio à decisão (MCDA-C), Instalações elétricas e energia (Projeto Elétrico Agroindustrial,
-  Off-grid), Automação e supervisão (Sinótico — Supervisório MQTT) e Utilitários (Gerador de QR Code). Clique na figura ou no
+  Off-grid), Eletrônica e simulação (Simulador de Circuitos Falstad + SPICE), Automação e supervisão (Sinótico — Supervisório MQTT) e Utilitários (Gerador de QR Code). Clique na figura ou no
   nome para abrir; "código ↗" leva ao repositório.
 - **Fluxo de projetos com os apps separados:** QFD → Projeto Conceitual → Gestão de Projetos, com o próximo passo destacado.
 - **Jogo de missões** (o mesmo do Apoio à Escrita de Patentes): cada missão cumprida dá XP e uma medalha; o XP sobe o nível

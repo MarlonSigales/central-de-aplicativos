@@ -22,6 +22,7 @@ const CATEGORIAS = [
     { id: 'pi', nome: 'Propriedade intelectual', descricao: 'Do invento ao pedido de patente.' },
     { id: 'decisao', nome: 'Apoio à decisão', descricao: 'Escolher entre alternativas com critérios explícitos.' },
     { id: 'eletrica', nome: 'Instalações elétricas e energia', descricao: 'Apps didáticos de Energização Rural e de Projeto de Instalações Elétricas Agroindustriais.' },
+    { id: 'eletronica', nome: 'Eletrônica e simulação', descricao: 'Circuitos simulados em tempo real no navegador, com modelos SPICE.' },
     { id: 'automacao', nome: 'Automação e supervisão', descricao: 'Acompanhar e comandar plantas pelo navegador.' },
     { id: 'academico', nome: 'Gestão acadêmica', descricao: 'Organização de aulas, professores, salas e laboratórios.' },
     { id: 'utilitarios', nome: 'Utilitários', descricao: 'Ferramentas pequenas do dia a dia.' }
@@ -106,6 +107,17 @@ const APPS = [
         codigo: 'https://github.com/MarlonSigales/projeto-solar-offgrid',
         imagem: 'img/apps/offgrid.jpg',
         etiquetas: ['fotovoltaico', 'aula']
+    },
+    {
+        id: 'simulador',
+        ativo: true,
+        categoria: 'eletronica',
+        nome: 'Simulador de Circuitos (Falstad + SPICE)',
+        descricao: 'Circuitos em tempo real com a usabilidade do simulador do Prof. Falstad e modelos SPICE: biblioteca pesquisável, Caixa SPICE e osciloscópio.',
+        url: 'https://marlonsigales.github.io/simulador-baseado-no-falstad-e-spice/',
+        codigo: 'https://github.com/MarlonSigales/simulador-baseado-no-falstad-e-spice',
+        imagem: 'img/apps/simulador.jpg',
+        etiquetas: ['tempo real', 'SPICE', 'aula']
     },
     {
         id: 'mqtt',
