@@ -115,8 +115,8 @@ const APPS = [
         categoria: 'eletronica',
         nome: 'Simulador de Circuitos (Falstad + SPICE)',
         descricao: 'Circuitos em tempo real como no simulador do Prof. Falstad, com modelos SPICE, não idealidades, microcontrolador em C/Arduino, análises no ngspice e importação do Falstad.',
-        url: 'https://marlonsigales.github.io/simulador-baseado-no-falstad-e-spice/',
-        codigo: 'https://github.com/MarlonSigales/simulador-baseado-no-falstad-e-spice',
+        url: 'https://marlonsigales.github.io/simulador-baseado-no-falstad-e-SPICE/index.html',
+        codigo: 'https://github.com/MarlonSigales/simulador-baseado-no-falstad-e-SPICE',
         imagem: 'img/apps/simulador.jpg',
         etiquetas: ['tempo real', 'SPICE', 'microcontrolador', 'aula']
     },
@@ -137,7 +137,7 @@ const APPS = [
         categoria: 'maquinas',
         nome: 'Comparador de Dosadores',
         descricao: 'Dados brutos de bancada de dosadores de sementes ou adubo: ANOVA fatorial com Tukey e desdobramentos, Random Forest + SHAP, ISO 5690-2 para adubo e relatório completo.',
-        url: 'https://marlonsigales.github.io/app-compara-dosadores/',
+        url: 'https://marlonsigales.github.io/app-compara-dosadores/index.html',
         codigo: 'https://github.com/MarlonSigales/app-compara-dosadores',
         imagem: 'img/apps/dosadores.jpg',
         etiquetas: ['ANOVA', 'Tukey', 'RF + SHAP', 'ISO 5690-2']

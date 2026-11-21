@@ -36,6 +36,8 @@ Atualizado em 03/11/2026 (versão 2). Os números são fixos (servem de referên
 18 [resolvido 21/11/2026] Novo app: Comparador de Dosadores (categoria nova "Máquinas agrícolas e ensaios"), com figura da tela real.
    Endereço do GitHub Pages a confirmar quando o Pages do repositório for ativado.
 
+19 [resolvido 21/11/2026] Links que davam 404: o Simulador usava "spice" minúsculo, mas o GitHub Pages diferencia maiúsculas (repositório é ...-SPICE); corrigido para .../simulador-baseado-no-falstad-e-SPICE/index.html. Comparador de Dosadores com /index.html. Os dois endereços foram conferidos abrindo o app.
+
 === O QUE FALTA
 7 [resolvido 03/11/2026] Endereço do MCDA-C Web.
 8 [fazer] Outros apps que o usuário quiser incluir: informar nome, endereço e repositório.
