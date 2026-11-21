@@ -24,6 +24,7 @@ const CATEGORIAS = [
     { id: 'eletrica', nome: 'Instalações elétricas e energia', descricao: 'Apps didáticos de Energização Rural e de Projeto de Instalações Elétricas Agroindustriais.' },
     { id: 'eletronica', nome: 'Eletrônica e simulação', descricao: 'Circuitos simulados em tempo real no navegador, com modelos SPICE.' },
     { id: 'automacao', nome: 'Automação e supervisão', descricao: 'Acompanhar e comandar plantas pelo navegador.' },
+    { id: 'maquinas', nome: 'Máquinas agrícolas e ensaios', descricao: 'Análise de ensaios de bancada de semeadoras e adubadoras.' },
     { id: 'academico', nome: 'Gestão acadêmica', descricao: 'Organização de aulas, professores, salas e laboratórios.' },
     { id: 'utilitarios', nome: 'Utilitários', descricao: 'Ferramentas pequenas do dia a dia.' }
 ];
@@ -129,6 +130,17 @@ const APPS = [
         codigo: 'https://github.com/MarlonSigales/MQTT-Cliente-supervisorio',
         imagem: 'img/apps/mqtt.jpg',
         etiquetas: ['MQTT', 'pós-colheita']
+    },
+    {
+        id: 'dosadores',
+        ativo: true,
+        categoria: 'maquinas',
+        nome: 'Comparador de Dosadores',
+        descricao: 'Dados brutos de bancada de dosadores de sementes ou adubo: ANOVA fatorial com Tukey e desdobramentos, Random Forest + SHAP, ISO 5690-2 para adubo e relatório completo.',
+        url: 'https://marlonsigales.github.io/app-compara-dosadores/',
+        codigo: 'https://github.com/MarlonSigales/app-compara-dosadores',
+        imagem: 'img/apps/dosadores.jpg',
+        etiquetas: ['ANOVA', 'Tukey', 'RF + SHAP', 'ISO 5690-2']
     },
     {
         id: 'horarios',

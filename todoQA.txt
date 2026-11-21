@@ -33,12 +33,19 @@ Atualizado em 03/11/2026 (versão 2). Os números são fixos (servem de referên
    Primeira versão:, categoria nova "Eletrônica e simulação", com figura da tela real.
    Endereço do GitHub Pages a confirmar quando o Pages do repositório for ativado.
 
+18 [resolvido 21/11/2026] Novo app: Comparador de Dosadores (categoria nova "Máquinas agrícolas e ensaios"), com figura da tela real.
+   Endereço do GitHub Pages a confirmar quando o Pages do repositório for ativado.
+
 === O QUE FALTA
 7 [resolvido 03/11/2026] Endereço do MCDA-C Web.
 8 [fazer] Outros apps que o usuário quiser incluir: informar nome, endereço e repositório.
 9 [fazer] Conferir no navegador real (endereços de 03/11 passados pelo usuário) se todos os endereços do GitHub Pages abrem (daqui não dá para acessar o github.io).
 10 [resolvido 03/11/2026] GitHub Pages ativo (endereço passado pelo usuário).
 11 [futuro] Trocar as figuras quando a tela de algum app mudar muito.
+
+=== QA (21/11/2026)
+- node tests/testes.js: 15 de 15 passaram depois de incluir o Comparador de Dosadores.
+- Playwright em 360, 768, 1024 e 1920 px: cartão aparece, sem estouro horizontal e sem erro de JavaScript.
 
 === QA (18/11/2026)
 - node tests/testes.js: 15 de 15 passaram depois de incluir o Simulador de Circuitos.
